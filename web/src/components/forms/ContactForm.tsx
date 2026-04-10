@@ -1,50 +1,63 @@
 "use client";
 
 import { useState } from "react";
+import { site } from "@/lib/site";
 
 type Props = {
   source?: string;
 };
 
 export function ContactForm({ source = "contact" }: Props) {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle",
-  );
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("loading");
     setMessage("");
     const form = e.currentTarget;
     const data = new FormData(form);
-    const body = {
-      name: String(data.get("name") ?? "").trim(),
-      email: String(data.get("email") ?? "").trim(),
-      phone: String(data.get("phone") ?? "").trim(),
-      subject: String(data.get("subject") ?? "").trim(),
-      message: String(data.get("message") ?? "").trim(),
-      source,
-    };
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const subject = String(data.get("subject") ?? "").trim();
+    const msg = String(data.get("message") ?? "").trim();
+
+    if (!name || !email || !subject || !msg) {
+      setStatus("error");
+      setMessage("Please complete all required fields.");
+      return;
+    }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) {
+      setStatus("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    const bodyLines = [
+      `Name: ${name}`,
+      `Reply to: ${email}`,
+      phone ? `Phone: ${phone}` : null,
+      `Form: ${source}`,
+      "",
+      msg,
+    ].filter(Boolean) as string[];
+
+    const body = bodyLines.join("\n");
+    const maxLen = 1800;
+    const safeBody = body.length > maxLen ? `${body.slice(0, maxLen)}\n…` : body;
+
+    const mailto = `mailto:${site.email}?subject=${encodeURIComponent(`[Website] ${subject}`)}&body=${encodeURIComponent(safeBody)}`;
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const json = (await res.json().catch(() => ({}))) as { error?: string };
-      if (!res.ok) {
-        setStatus("error");
-        setMessage(json.error ?? "Something went wrong. Please try again.");
-        return;
-      }
+      window.location.href = mailto;
       setStatus("success");
-      setMessage("Thank you. We will respond shortly.");
+      setMessage("Opening your email app. If nothing happens, email us at " + site.email);
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Please try again or email us directly.");
+      setMessage("Could not open email. Please contact us at " + site.email);
     }
   }
 
@@ -136,10 +149,9 @@ export function ContactForm({ source = "contact" }: Props) {
 
       <button
         type="submit"
-        disabled={status === "loading"}
-        className="w-full cursor-pointer rounded-md bg-gold px-5 py-3 text-sm font-semibold text-navy-950 shadow-sm transition-colors duration-200 hover:bg-gold-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+        className="w-full cursor-pointer rounded-md bg-gold px-5 py-3 text-sm font-semibold text-navy-950 shadow-sm transition-colors duration-200 hover:bg-gold-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 sm:w-auto"
       >
-        {status === "loading" ? "Sending…" : "Send message"}
+        Send message
       </button>
     </form>
   );
