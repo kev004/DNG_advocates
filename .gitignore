@@ -1,0 +1,14 @@
+# Cursor / local IDE
+.cursor/
+
+# Root-level stray lockfile (app lives in web/)
+/package-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env (root or monorepo)
+.env
+.env.*
+!.env.example
