@@ -66,22 +66,23 @@ export const practiceAreas = [
 
 export const teamMembers = [
   {
-    slug: "dolphine-moindi",
-    name: "Dolphine Moindi",
-    role: "Advocate",
-    bio: "Focus on commercial transactions and regulatory alignment for Kenyan and regional clients.",
-  },
-  {
     slug: "gloria-kwamboka-nyambane",
     name: "Gloria Kwamboka Nyambane",
-    role: "Advocate",
+    role: "Managing Partner",
     bio: "Advises on property, finance, and employment matters with a solutions-first approach.",
   },
   {
+    slug: "dolphine-moindi",
+    name: "Dolphine Moindi",
+    role: "Partner & Head of Litigation Dispute Resolution",
+    bio: "Focus on commercial transactions and regulatory alignment for Kenyan and regional clients.",
+  },
+  
+  {
     slug: "elvis-oduor",
     name: "Elvis Oduor",
-    role: "Advocate",
-    bio: "Supports clients on IP, data protection, and technology-led commercial arrangements.",
+    role: "Finance and Administration",
+    bio: "Responsible for overseeing financial operations, budgeting, and record keeping while ensuring smooth administrative support across the organization.",
   },
 ] as const;
 
