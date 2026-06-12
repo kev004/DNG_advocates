@@ -56,19 +56,19 @@ export const practiceAreaImages: Record<
   },
 };
 
-/** Context imagery for team sections (not individual portraits). */
+/** Official team headshots in /public/team/. */
 export const teamContextImages: Record<string, SiteImageDef> = {
-  "dolphine-moindi": {
-    src: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=85",
-    alt: "Legal research materials and reference books",
+  "elvis-oduor": {
+    src: "/team/elvis-oduor.png",
+    alt: "Elvis Oduor — Finance and Administration, DNG & Company Advocates",
   },
   "gloria-kwamboka-nyambane": {
-    src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85",
-    alt: "Signed documents and correspondence on a desk",
+    src: "/team/gloria-kwamboka-nyambane.png",
+    alt: "Gloria Kwamboka Nyambane — Managing Partner, DNG & Company Advocates",
   },
-  "elvis-oduor": {
-    src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=85",
-    alt: "Laptop and notebook in a focused work setting",
+  "dolphine-moindi": {
+    src: "/team/dolphine-moindi.png",
+    alt: "Dolphine Moindi — Partner & Head of Litigation Dispute Resolution, DNG & Company Advocates",
   },
 };
 

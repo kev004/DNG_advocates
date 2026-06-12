@@ -33,13 +33,13 @@ export function TeamPreview() {
               key={m.slug}
               className="flex flex-col overflow-hidden rounded-lg border border-slate-200 bg-surface transition-shadow duration-200 hover:shadow-md"
             >
-              <div className="relative aspect-[16/10] w-full">
+              <div className="relative aspect-[3/4] w-full">
                 <Image
                   src={visual.src}
                   alt={visual.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
               <div className="flex flex-1 flex-col p-6">

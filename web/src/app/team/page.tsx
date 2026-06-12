@@ -52,14 +52,14 @@ export default function TeamPage() {
                 id={m.slug}
                 className="scroll-mt-28 overflow-hidden rounded-xl border border-slate-200 bg-surface shadow-sm"
               >
-                <div className="grid gap-0 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-                  <div className="relative aspect-[16/10] min-h-[200px] md:aspect-auto md:min-h-[280px]">
+                <div className="grid gap-0 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)]">
+                  <div className="relative aspect-[3/4] min-h-[320px] md:min-h-[380px]">
                     <Image
                       src={visual.src}
                       alt={visual.alt}
                       fill
-                      sizes="(max-width: 768px) 100vw, 45vw"
-                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 320px"
+                      className="object-cover object-top"
                     />
                   </div>
                   <div className="flex flex-col justify-center p-8 sm:p-10">
