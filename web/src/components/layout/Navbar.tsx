@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -30,18 +31,21 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 shrink-0 border-b border-navy-900/10 bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/90">
-      <Container className="flex h-14 items-center justify-between gap-4 sm:h-16 lg:h-[4.25rem] landscape:max-md:h-14">
+    <header className="sticky top-0 z-50 shrink-0 overflow-hidden border-b border-navy-900/10 bg-white">
+      <Container className="flex h-24 items-center justify-between gap-4 sm:h-28 lg:h-32 landscape:max-md:h-20">
         <Link
           href="/"
-          className="group cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          className="group flex h-full shrink-0 cursor-pointer items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          aria-label={site.name}
         >
-          <span className="block font-serif text-lg font-semibold tracking-tight text-navy-900 transition-colors duration-200 group-hover:text-navy-800 sm:text-xl">
-            {site.shortName}
-          </span>
-          <span className="hidden text-xs font-medium text-slate-600 sm:block">
-            Advocates
-          </span>
+          <Image
+            src="/logo.png"
+            alt={site.name}
+            width={1024}
+            height={673}
+            className="h-full max-h-20 w-auto object-contain object-left transition-opacity duration-200 group-hover:opacity-90 sm:max-h-24 lg:max-h-28"
+            priority
+          />
         </Link>
 
         <nav

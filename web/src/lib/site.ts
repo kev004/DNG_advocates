@@ -5,11 +5,11 @@ export const site = {
   description:
     "Nairobi-based law firm delivering commercial, property, finance, employment, IP, and data protection advice with clarity and rigor.",
   url: "https://www.dngadvocates.co.ke",
-  email: "info@dngadvocates.co.ke",
-  phone: "+254 700 000 000",
+  email: "info@dngadvocates@gmail.com",
+  phone: "+254 725 039 021 / +254 715 220 892",
   address: {
-    line1: "Westlands Business District",
-    line2: "Nairobi, Kenya",
+    line1: "Prudential Assurance Building, Nairobi",
+    line2: "Nairobi East District",
   },
   social: {
     linkedin: "https://www.linkedin.com",

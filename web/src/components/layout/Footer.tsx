@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { navLinks, site } from "@/lib/site";
 import { IconMail, IconMapPin, IconPhone } from "@/components/icons";
@@ -10,10 +11,22 @@ export function Footer() {
       <Container className="py-12 sm:py-14 landscape:max-md:py-10">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <p className="font-serif text-xl font-semibold text-white">
-              {site.name}
-            </p>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-slate-400">
+            <Link
+              href="/"
+              aria-label={site.name}
+              className="inline-block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
+            >
+              <div className="rounded-xl bg-white px-6 py-4 shadow-md shadow-black/20 transition-opacity duration-200 hover:opacity-90">
+                <Image
+                  src="/logo.png"
+                  alt={site.name}
+                  width={280}
+                  height={92}
+                  className="w-52 h-auto object-contain sm:w-64"
+                />
+              </div>
+            </Link>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-slate-400">
               {site.description}
             </p>
           </div>
